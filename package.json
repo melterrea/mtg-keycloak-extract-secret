@@ -1,0 +1,23 @@
+{
+  "name": "mtg-keycloak-extract-secret",
+  "version": "1.0.0",
+  "description": "Custom Github action to retrieve Client Secret from Keycloak",
+  "main": "index.js",
+  "scripts": {
+    "build": "ncc build index.js -o dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melterrea/mtg-keycloak-extract-secret.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/melterrea/mtg-keycloak-extract-secret/issues"
+  },
+  "homepage": "https://github.com/melterrea/mtg-keycloak-extract-secret#readme",
+  "dependencies": {
+    "@actions/core": "^1.10.0"
+  }
+}

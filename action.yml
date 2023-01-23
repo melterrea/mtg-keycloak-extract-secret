@@ -1,0 +1,21 @@
+name: "Get Client Secret from Keycloak"
+description: "Retrieve a client secret from Keycloak using a username and password"
+inputs:
+  keycloakUrl:
+    description: "The URL of the Keycloak server"
+    required: true
+  realm:
+    description: "The realm to use for authentication"
+    required: true
+  clientId:
+    description: "The client ID to use for authentication"
+    required: true
+  username:
+    description: "The username to use for authentication"
+    required: true
+  password:
+    description: "The password to use for authentication"
+    required: true
+runs:
+  using: "node12"
+  main: "index.js"
