@@ -37,7 +37,7 @@ const getClientSecret = async (inputObject) => {
     throw "No response for clients.";
   }
 
-  const client = clientResponse.data.find(
+  const client = clientsResponse.data.find(
     (client) => client["clientId"] === clientId
   );
 
@@ -46,12 +46,12 @@ const getClientSecret = async (inputObject) => {
   }
 
   // Get client secret
-  const clientResponse = await axios.get(
+  const clientSecretResponse = await axios.get(
     `${keycloakUrl}/admin/realms/${realm}/clients/${client["id"]}/client-secret`,
     options
   );
 
-  return clientResponse.data.value;
+  return clientSecretResponse.data.value;
 };
 
 (async () => {
