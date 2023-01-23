@@ -10326,7 +10326,7 @@ const getClientSecret = async (inputObject) => {
   };
 
   const clientsResponse = await axios.get(
-    `${keycloakUrl}/realms/master/protocol/openid-connect/token`,
+    `${keycloakUrl}/admin/realms/${realm}/clients`,
     options
   );
 
