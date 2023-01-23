@@ -6148,8 +6148,6 @@ const getInputsObject = () => {
   const username = getInput("username");
   const password = getInput("password");
 
-  console.log(`Keycloak URL is: ${keycloakUrl}`);
-
   return {
     keycloakUrl,
     realm,
@@ -10312,7 +10310,7 @@ const getClientSecret = async (inputObject) => {
 
   // Get access token
   const tokenResponse = await axios.post(
-    `${keycloakUrl}/realms/${realm}/protocol/openid-connect/token`,
+    `${keycloakUrl}/realms/master/protocol/openid-connect/token`,
     {
       grant_type: "password",
       client_id: clientId,
@@ -10321,16 +10319,25 @@ const getClientSecret = async (inputObject) => {
     }
   );
 
+  const options = {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  };
+
+  const clientsResponse = await axios.get(
+    `${keycloakUrl}/realms/master/protocol/openid-connect/token`,
+    options
+  );
+
+  console.log("clients response data: ", clientsResponse.data);
+
   const accessToken = tokenResponse.data.access_token;
 
   // Get client secret
   const clientResponse = await axios.get(
     `${keycloakUrl}/admin/realms/${realm}/clients/${clientId}/client-secret`,
-    {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    }
+    options
   );
 
   return clientResponse.data.value;
