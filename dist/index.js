@@ -10311,6 +10311,7 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const axios = __nccwpck_require__(1441);
+const core = __nccwpck_require__(2186);
 const querystring = __nccwpck_require__(1191);
 const { getInputsObject } = __nccwpck_require__(1608);
 

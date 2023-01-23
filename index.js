@@ -1,4 +1,5 @@
 const axios = require("axios");
+const core = require("@actions/core");
 const querystring = require("querystring");
 const { getInputsObject } = require("./src/utils");
 
