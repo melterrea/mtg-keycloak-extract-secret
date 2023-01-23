@@ -9,7 +9,7 @@ const getClientSecret = async (inputObject) => {
     `${keycloakUrl}/realms/master/protocol/openid-connect/token`,
     {
       grant_type: "password",
-      client_id: clientId,
+      client_id: "admin-cli",
       username: username,
       password: password,
     }
