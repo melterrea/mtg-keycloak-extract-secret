@@ -1,18 +1,23 @@
 const axios = require("axios");
+const querystring = require("querystring");
 const { getInputsObject } = require("./src/utils");
 
 const getClientSecret = async (inputObject) => {
-  console.log("we are here");
   const { keycloakUrl, realm, clientId, username, password } = inputObject;
 
   // Get access token
   const tokenResponse = await axios.post(
     `${keycloakUrl}/realms/master/protocol/openid-connect/token`,
-    {
+    querystring.stringify({
       grant_type: "password",
       client_id: "admin-cli",
       username: username,
       password: password,
+    }),
+    {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     }
   );
 
@@ -42,9 +47,6 @@ const getClientSecret = async (inputObject) => {
 
 (async () => {
   const inputsObject = getInputsObject();
-
-  console.log("Input objects are: ", inputsObject);
-
   const clientSecret = await getClientSecret(inputsObject);
   console.log(clientSecret);
 })();

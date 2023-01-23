@@ -10213,6 +10213,14 @@ module.exports = require("path");
 
 /***/ }),
 
+/***/ 1191:
+/***/ ((module) => {
+
+"use strict";
+module.exports = require("querystring");
+
+/***/ }),
+
 /***/ 2413:
 /***/ ((module) => {
 
@@ -10303,20 +10311,25 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 const axios = __nccwpck_require__(1441);
+const querystring = __nccwpck_require__(1191);
 const { getInputsObject } = __nccwpck_require__(1608);
 
 const getClientSecret = async (inputObject) => {
-  console.log("we are here");
   const { keycloakUrl, realm, clientId, username, password } = inputObject;
 
   // Get access token
   const tokenResponse = await axios.post(
     `${keycloakUrl}/realms/master/protocol/openid-connect/token`,
-    {
+    querystring.stringify({
       grant_type: "password",
       client_id: "admin-cli",
       username: username,
       password: password,
+    }),
+    {
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
     }
   );
 
@@ -10346,9 +10359,6 @@ const getClientSecret = async (inputObject) => {
 
 (async () => {
   const inputsObject = getInputsObject();
-
-  console.log("Input objects are: ", inputsObject);
-
   const clientSecret = await getClientSecret(inputsObject);
   console.log(clientSecret);
 })();
