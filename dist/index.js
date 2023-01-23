@@ -10335,7 +10335,7 @@ const getClientSecret = async (inputObject) => {
 
   const options = {
     headers: {
-      Authorization: `Bearer ${accessToken}`,
+      Authorization: `Bearer ${tokenResponse.data.access_token}`,
     },
   };
 
@@ -10345,8 +10345,6 @@ const getClientSecret = async (inputObject) => {
   );
 
   console.log("clients response data: ", clientsResponse.data);
-
-  const accessToken = tokenResponse.data.access_token;
 
   // Get client secret
   const clientResponse = await axios.get(
