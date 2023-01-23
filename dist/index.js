@@ -10369,7 +10369,8 @@ const getClientSecret = async (inputObject) => {
 (async () => {
   const inputsObject = getInputsObject();
   const clientSecret = await getClientSecret(inputsObject);
-  console.log(clientSecret);
+  core.setOutput("secret", clientSecret);
+  core.setSecret(clientSecret); // hiding in the worfklow console
 })();
 
 })();

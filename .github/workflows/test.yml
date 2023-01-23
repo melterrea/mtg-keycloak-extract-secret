@@ -2,7 +2,7 @@ name: Test
 
 on:
   push:
-  
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -10,9 +10,13 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: ./
+        id: test
         with:
           keycloakUrl: https://test-keycloak.inkastle.studio/auth
           realm: Melterrea
           clientId: melterrea
           username: kcusername
           password: kcpassword
+
+      - name: Check secret
+        run: echo "${{test.outputs.secret}}"
