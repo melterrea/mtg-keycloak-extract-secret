@@ -6148,6 +6148,8 @@ const getInputsObject = () => {
   const username = getInput("username");
   const password = getInput("password");
 
+  console.log(`Keycloak URL is: ${keycloakUrl}`);
+
   return {
     keycloakUrl,
     realm,
