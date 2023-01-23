@@ -31,6 +31,6 @@ const getClientSecret = async (inputObject) => {
 };
 
 (async () => {
-  const clientSecret = await getClientSecret(getInputsObject);
+  const clientSecret = await getClientSecret(getInputsObject());
   console.log(clientSecret);
 })();
