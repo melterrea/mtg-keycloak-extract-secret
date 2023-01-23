@@ -10374,7 +10374,7 @@ const getClientSecret = async (inputObject) => {
     core.setOutput("secret", clientSecret);
     core.setSecret(clientSecret); // hiding in the worfklow console
   } catch (e) {
-    core.error(e.message);
+    core.setFailed(`Action failed with error ${e}`);
   }
 })();
 
