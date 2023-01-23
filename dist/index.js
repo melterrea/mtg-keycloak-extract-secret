@@ -10345,7 +10345,11 @@ const getClientSecret = async (inputObject) => {
 };
 
 (async () => {
-  const clientSecret = await getClientSecret(getInputsObject());
+  const inputsObject = getInputsObject();
+
+  console.log("Input objects are: ", inputsObject);
+
+  const clientSecret = await getClientSecret(inputsObject);
   console.log(clientSecret);
 })();
 
