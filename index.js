@@ -2,6 +2,7 @@ const axios = require("axios");
 const { getInputsObject } = require("./src/utils");
 
 const getClientSecret = async (inputObject) => {
+  console.log("we are here");
   const { keycloakUrl, realm, clientId, username, password } = inputObject;
 
   // Get access token

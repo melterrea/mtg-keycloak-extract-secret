@@ -10306,6 +10306,7 @@ const axios = __nccwpck_require__(1441);
 const { getInputsObject } = __nccwpck_require__(1608);
 
 const getClientSecret = async (inputObject) => {
+  console.log("we are here");
   const { keycloakUrl, realm, clientId, username, password } = inputObject;
 
   // Get access token
