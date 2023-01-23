@@ -19,4 +19,4 @@ jobs:
           password: kcpassword
 
       - name: Check secret
-        run: echo "${{test.outputs.secret}}"
+        run: echo "${{steps.test.outputs.secret}}"
