@@ -33,7 +33,7 @@ const getClientSecret = async (inputObject) => {
     options
   );
 
-  if (!clientsResponse.data || clientsResponse.data.length) {
+  if (!clientsResponse.data || !clientsResponse.data.length) {
     throw "No response for clients.";
   }
 
