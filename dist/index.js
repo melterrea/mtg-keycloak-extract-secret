@@ -10339,16 +10339,31 @@ const getClientSecret = async (inputObject) => {
     },
   };
 
+  // GET All clients for the realm
   const clientsResponse = await axios.get(
     `${keycloakUrl}/admin/realms/${realm}/clients`,
     options
   );
 
-  console.log("clients response data: ", clientsResponse.data);
+  if (!clientsResponse.data || clientsResponse.data.length) {
+    throw "No response for clients.";
+  }
+
+  const clientUUID = null;
+  // Get Keycloak ID of client
+  clientsResponse.data.forEach((client) => {
+    if (client["clientId"] === clientId) {
+      clientUUID = client["id"];
+    }
+  });
+
+  if (!clientUUID) {
+    throw "No client found with this clientId.";
+  }
 
   // Get client secret
   const clientResponse = await axios.get(
-    `${keycloakUrl}/admin/realms/${realm}/clients/${clientId}/client-secret`,
+    `${keycloakUrl}/admin/realms/${realm}/clients/${clientUUID}/client-secret`,
     options
   );
 
